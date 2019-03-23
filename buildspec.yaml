@@ -1,0 +1,12 @@
+version: 0.2
+
+phases:
+  test:
+    commands: 
+      - npm test
+  build:
+    commands:
+      - docker build -t astridnovicky/codebar-app:latest . 
+  deploy:
+    commands:
+      - docker push astridnovicky/codebar-app
