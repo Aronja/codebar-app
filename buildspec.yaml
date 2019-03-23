@@ -5,6 +5,9 @@ phases:
     commands: 
       - npm install
       - apt-get update
+      - apt-get docker.io
+      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&
+      - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
   pre_build:
     commands:
       - CI=true npm test
