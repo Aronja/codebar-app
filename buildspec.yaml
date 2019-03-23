@@ -7,7 +7,7 @@ phases:
       - apt-get update
   pre_build:
     commands:
-      - npm test
+      - CI=true npm test
   build:
     commands:
       - docker build -t astridnovicky/codebar-app:latest .
