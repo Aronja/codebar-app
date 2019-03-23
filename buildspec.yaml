@@ -10,5 +10,6 @@ phases:
       - CI=true npm test
   build:
     commands:
+      - docker info
       - docker build -t astridnovicky/codebar-app:latest .
       - docker push astridnovicky/codebar-app
