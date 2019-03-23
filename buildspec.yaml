@@ -4,11 +4,8 @@ phases:
   install:  
     commands: 
       - npm install
-      - yum update -y
-      - yum install -y docker
       - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&
       - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
-      - yum install -y libgtk2.0-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 xvfb
   pre_build:
     commands:
       - CI=true npm test
